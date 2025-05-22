@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Add Patient";
+}
+
+<h2>Add Patient to Doctor</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.Hidden("doctorId", (int)ViewBag.DoctorId)
+
+    <div class="form-group">
+        @Html.Label("Select Patient")
+        @Html.DropDownList("patientId", (SelectList)ViewBag.PatientId, "Choose a patient", new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Patient</button>
+}
+
+<div>
+    @Html.ActionLink("Back to Doctor Details", "Details", new { id = ViewBag.DoctorId })
+</div>
